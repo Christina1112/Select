@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/public.css">
+		<style>
+			.wrap {
+				width: 500px;
+				height: 600px;
+				background: url(images/bg.png);
+				margin: 100px auto;
+				/*padding:140px 0 0 76px;*/
+				box-sizing: border-box;
+				position: relative;
+			}
+			
+			.navs {
+				width: 346px;
+				/*height:46px;*/
+				border: 1px solid #fff;
+				background: #fff;
+				border-radius: 22px;
+				box-sizing: border-box;
+				position: absolute;
+				left: 76px;
+				top: 140px;
+				padding: 5px;
+			}
+			
+			.span1 {
+				width: 270px;
+				height: 36px;
+				line-height:36px;
+				border: 1px solid transparent;
+				box-sizing: border-box;
+				border-radius: 17px;
+				background: #d9d9e2 url(images/search.png) no-repeat 7px 6px;
+				/*padding: 6px 36px;*/
+				padding-left:36px;
+				margin-right: 4px;
+			}
+			
+			.navs button {
+				width: 60px;
+				height: 36px;
+				border: 1px solid #fd635e;
+				border-radius: 16px;
+				background: #fd635e;
+				color: #fff;
+				box-sizing: border-box;
+			}
+			
+			.bottom {
+				width: 346px;
+				padding: 5px;
+				border-radius: 22px;
+				box-sizing: border-box;
+				display: none;
+				background: #e4e4fe;
+				position: absolute;
+				left: 76px;
+				top: 140px;
+			}
+			
+			.span2 {
+				border-color: #fd635e;
+				background: url(images/search1.png) no-repeat 7px 6px;
+			}
+			
+			.navs1 {
+				border-color: transparent;
+				background: #e4e4fe;
+				position: absolute;
+				left: 0;
+				top: 0;
+				margin-bottom: 4px;
+			}
+			
+			.choose {
+				width: 346px;
+				padding: 5px;
+				box-sizing: border-box;
+				margin-top:46px;
+			}
+			
+			.choose li {
+				width: 100%;
+				height: 36px;
+				/*background: #e4e4fe;*/
+				border: 1px solid #e4e4fe;
+				border-radius: 17px;
+				line-height: 36px;
+				box-sizing: border-box;
+				padding-left: 10px;
+			}
+		 .active{
+				background: #fd635e;
+				color:#fff;
+			}
+			
+			.choose li:hover {
+				background: #fd635e;
+				color:#fff;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<div class="navs clearfix">
+				<span class="span1 fl"></span>
+				<button class="fl">GO</button>
+			</div>
+			<div class="bottom clearfix">
+				<div class="navs navs1 clearfix">
+					<span class="span1 span2 fl"></span>
+					<button class="fl">GO</button>
+				</div>
+				<ul class="choose">
+					<li>第七个读者</li>
+					<li>心理罪 画像</li>
+					<li>心理罪 教化场</li>
+					<li>心理罪 城市之光</li>
+					<li>地球往事</li>
+				</ul>
+			</div>
+
+		</div>
+		<script>
+			var lis = document.getElementsByTagName('li');
+			var navs = document.getElementsByClassName('navs')[0];
+			var span = document.getElementsByTagName('span');
+			var bottom = document.getElementsByClassName('bottom')[0];
+			
+			span[0].onclick = function(){
+				navs.style.display="none"
+				bottom.style.display="block";
+			}
+			var previndex = 0;
+			for(var i=0;i<lis.length;i++){
+				lis[i].index = i;
+				lis[i].onclick = function(){
+					lis[previndex].className = '';
+					console.log(previndex)
+					this.className = "active";
+					previndex = this.index;
+					navs.style.display="block"
+					span[0].innerHTML = this.innerHTML;
+					bottom.style.display="none";
+				}
+			}
+		</script>
+	</body>
+
+</html>
